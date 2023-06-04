@@ -16,6 +16,7 @@ function Hasher() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(output);
+    alert("Hash value copied to clipboard!");
   };
 
   return (
