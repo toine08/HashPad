@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { MD5 } from "crypto-js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Hasher() {
   const [input, setInput] = useState("");
@@ -16,11 +18,14 @@ function Hasher() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(output);
-    alert("Hash value copied to clipboard!");
+    toast.success("Hash value copied to clipboard!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
   };
 
   return (
     <div className="max-w-lg mx-auto mt-8 bg-white rounded-lg shadow-lg p-6">
+      <ToastContainer />
       <h2 className="text-2xl font-bold mb-4">MD5 Hash Generator</h2>
       <div className="mb-4">
         <label htmlFor="input" className="block font-medium mb-2">
