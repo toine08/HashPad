@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { MD5 } from "crypto-js";
+import  {MD5}  from "crypto-js";
+import Base64 from 'crypto-js/enc-base64';
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,19 +14,17 @@ function Hasher() {
   };
 
   const handleHash = () => {
-    const hashedValue = MD5(input).toString();
-    setOutput(hashedValue);
-  };
-
-  const handleCopy = () => {
+    const hashedValue = Base64.stringify(MD5(input));
     navigator.clipboard.writeText(output);
+    setOutput(hashedValue);
     toast.success("Hash value copied to clipboard!", {
       position: toast.POSITION.TOP_RIGHT,
+      theme: "colored",
     });
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-8 bg-white rounded-lg shadow-lg p-6">
+    <div className="max-w-lg mx-auto h-screen pt-8 bg-white rounded-lg shadow-lg p-6 dark:bg-black dark:text-white">
       <ToastContainer />
       <h2 className="text-2xl font-bold mb-4">MD5 Hash Generator</h2>
       <div className="mb-4">
@@ -36,7 +36,7 @@ function Hasher() {
           id="input"
           value={input}
           onChange={handleChange}
-          className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:border-indigo-500"
+          className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:border-indigo-500 dark:bg-black dark:text-white"
         />
       </div>
       <button
@@ -45,28 +45,6 @@ function Hasher() {
       >
         Hash
       </button>
-      {output && (
-        <div className="mt-4">
-          <label htmlFor="output" className="block font-medium mb-2">
-            Hashed value:
-          </label>
-          <div className="flex items-center">
-            <input
-              type="password"
-              id="output"
-              value={output}
-              readOnly
-              className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:border-indigo-500"
-            />
-            <button
-              onClick={handleCopy}
-              className="ml-2 bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300"
-            >
-              Copy
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
