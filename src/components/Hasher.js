@@ -58,7 +58,8 @@ function Hasher() {
     <div className="max-w-lg mx-auto h-screen pt-8 bg-white rounded-lg shadow-lg p-6 dark:bg-black dark:text-white">
       <ToastContainer />
       <div>
-        <h2 className="text-2xl font-bold mb-4">MD5 Hash Generator</h2>
+        <h1 className="text-2xl font-bold">HashPad</h1>
+        <label className="mb-10 pb-10">MD5 hash for create a password</label>
         <div className="mb-4">
           <label htmlFor="input" className="block font-medium mb-2">
             Enter text to hash:
@@ -75,7 +76,7 @@ function Hasher() {
       <div className="flex place-content-between">
         <button
           onClick={handleHash}
-          className="bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-700"
+          className="bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-emerald-900"
         >
           Hash
         </button>

@@ -20,7 +20,7 @@ function View() {
           <label className="dark: text-white block font-medium mb-2">
             Password:
           </label>
-          <table className="table-auto w-full dark: border-white dark:text-white bg-slate-700 rounded-lg border-solid ">
+          <table className="table-auto w-full dark: border-white dark:text-white bg-stone-200 dark:bg-slate-700 rounded-lg border-solid ">
             <thead>
               <tr>
                 <th className="px-4 py-2">Value</th>

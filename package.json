@@ -1,5 +1,5 @@
 {
-  "name": "passwordgen",
+  "name": "HashPad",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
