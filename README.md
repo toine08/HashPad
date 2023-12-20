@@ -51,12 +51,6 @@ Hash responsibly and keep your hashes safe!
 
 See the [open issues](https://github.com/yourname/hashpad/issues) for a list of proposed features and known issues.
 
-## Contributing
-
-Contributions are welcome! See [Contributing Guide](CONTRIBUTING.md) for more information.
-
 ## License 
 
 This project is licensed under MIT - see the [LICENSE](LICENSE) file for more details.
-
-Let me know if you would like any sections expanded or have additional ideas for the README! Tried to capture the key aspects of the app and contributions process.
