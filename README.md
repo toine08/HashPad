@@ -47,10 +47,6 @@ npm start
 
 Hash responsibly and keep your hashes safe!
 
-## Roadmap
-
-See the [open issues](https://github.com/yourname/hashpad/issues) for a list of proposed features and known issues.
-
 ## License 
 
 This project is licensed under MIT - see the [LICENSE](LICENSE) file for more details.
