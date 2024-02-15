@@ -40,7 +40,7 @@ npm start
 
 ## Usage
 
-1. Enter any password or text to hash
+1. Enter any sentance or text to hash
 2. Click the Hash button to generate MD5 hash
 3. Hash is copied to clipboard & saved locally
 4. Click the eye icon to view all saved hashes
