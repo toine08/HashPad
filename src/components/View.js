@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import getBrowserLocales from './getBrowserLocales';
+import React, { useState, useEffect } from "react";
+import getBrowserLocales from "./getBrowserLocales";
 
 function View() {
   const [password, setPassword] = useState(null);
+  const deletePassword = (id) => {
+    const updatedPasswords = password.filter((password) => password.id !== id);
+    localStorage.setItem("password", JSON.stringify(updatedPasswords));
+    setPassword(updatedPasswords);
+  };
 
-  const myArrayOfObjects = JSON.parse(
-    localStorage.getItem('password'),
-  );
+  const myArrayOfObjects = JSON.parse(localStorage.getItem("password"));
 
   useEffect(() => {
-    const storedPassword = localStorage.getItem('password');
+    const storedPassword = localStorage.getItem("password");
     setPassword(storedPassword);
   }, []);
 
@@ -20,7 +23,7 @@ function View() {
           <label className="dark: text-white block font-medium mb-2">
             Password:
           </label>
-          <table className="table-auto w-full dark: border-white dark:text-white bg-stone-200 dark:bg-slate-700 rounded-lg border-solid ">
+          <table className="table-auto w-full dark: border-white dark:text-white bg-stone-200 dark:bg-slate-500 rounded-lg border-solid ">
             <thead>
               <tr>
                 <th className="px-4 py-2">Value</th>
@@ -28,20 +31,25 @@ function View() {
               </tr>
             </thead>
             <tbody>
-              {myArrayOfObjects.map(item => {
+              {myArrayOfObjects.map((item) => {
                 const date = new Date(item.date);
                 const options = {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                  hour: 'numeric'
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
                 };
-                const readableDate = date.toLocaleDateString(getBrowserLocales(), options);
+                const readableDate = date.toLocaleDateString(
+                  getBrowserLocales(),
+                  options
+                );
 
                 return (
                   <tr key={item.id}>
                     <td>{item.value}</td>
                     <td>{readableDate}</td>
+                    <button onClick={() => deletePassword(item.id)}>
+                      <td>X</td>
+                    </button>
                   </tr>
                 );
               })}
@@ -49,7 +57,7 @@ function View() {
           </table>
         </div>
       ) : (
-        <div className='dark: text-white'>No password saved yet.</div>
+        <div className="dark: text-white">No password saved yet.</div>
       )}
     </div>
   );

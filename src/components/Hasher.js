@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import View from "./View";
 import { MD5 } from "crypto-js";
-import Base64 from 'crypto-js/enc-base64';
+import Base64 from "crypto-js/enc-base64";
 
 import { BiShow, BiHide } from "react-icons/bi";
 
@@ -12,7 +12,6 @@ function Hasher() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
 
   function toggle() {
     setIsOpen((isOpen) => !isOpen);
@@ -31,18 +30,18 @@ function Hasher() {
 
   const handleHash = () => {
     const hashedValue = Base64.stringify(MD5(input));
-    const hashedValueCorrect = hashedValue.replace(/=/g,'')
+    const hashedValueCorrect = hashedValue.replace(/=/g, "");
     navigator.clipboard.writeText(hashedValueCorrect);
 
     const existingData = JSON.parse(localStorage.getItem("password")) || [];
-  
+
     const newPassword = {
       value: hashedValueCorrect,
-      date: Date.now()
+      date: Date.now(),
     };
-  
+
     existingData.push(newPassword);
-  
+
     localStorage.setItem("password", JSON.stringify(existingData));
     /*const data = []
     data.push({ value: hashedValueCorrect, date: Date.now() });
@@ -55,7 +54,7 @@ function Hasher() {
   };
 
   return (
-    <div className="max-w-lg mx-auto h-screen pt-8 bg-white rounded-lg shadow-lg p-6 dark:bg-black dark:text-white">
+    <div className="max-w-lg mx-auto h-1/2 pt-8 bg-white rounded-lg shadow-lg p-6 dark:bg-slate-700 dark:text-white">
       <ToastContainer />
       <div>
         <h1 className="text-2xl font-bold">HashPad</h1>
@@ -69,31 +68,22 @@ function Hasher() {
             id="input"
             value={input}
             onChange={handleChange}
-            className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:border-indigo-500 dark:bg-black dark:text-white"
+            className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:border-indigo-500 dark:bg-slate-950 dark:text-white"
           />
         </div>
       </div>
       <div className="flex place-content-between">
         <button
           onClick={handleHash}
-          className="bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-emerald-900"
+          className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-emerald-900"
         >
           Hash
         </button>
-        <button
-          className="text-3xl"
-          onClick={toggle}
-        >
-          {isOpen ? (
-            <BiHide />
-          ) : (
-            <BiShow />
-          )}
+        <button className="text-3xl" onClick={toggle}>
+          {isOpen ? <BiHide /> : <BiShow />}
         </button>
       </div>
-      <div className="pt-10">
-        {isOpen && <View />}
-      </div>
+      <div className="pt-10">{isOpen && <View />}</div>
     </div>
   );
 }
