@@ -41,16 +41,20 @@ function Hasher() {
     };
 
     existingData.push(newPassword);
-
-    localStorage.setItem("password", JSON.stringify(existingData));
+    try {
+      localStorage.setItem("password", JSON.stringify(existingData));
     /*const data = []
     data.push({ value: hashedValueCorrect, date: Date.now() });
     localStorage.setItem('password', JSON.stringify(data));*/
     setOutput(hashedValueCorrect);
     toast.success("Hash value copied to clipboard!", {
-      position: toast.POSITION.TOP_RIGHT,
       theme: "colored",
     });
+    } catch (error) {
+      toast.error("Sorry couldn't hash the word",{
+      teheme: "colored",});
+    }
+    
   };
 
   return (

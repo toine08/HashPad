@@ -20,9 +20,7 @@ function View() {
     <div >
       {password ? (
         <div className="mb-4">
-                    <div class="text-white w-screen animated-background h-screen bg-gradient-to-r from-blue-500 via-blue-500 to-indigo-500 h-50 w-50">
-            X
-          </div>
+          
           <label className="dark: text-white block font-medium mb-2">
             Password:
           </label>
