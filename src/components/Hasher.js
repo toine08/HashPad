@@ -43,7 +43,7 @@ function Hasher() {
     });
     } catch (error) {
       toast.error("Sorry couldn't hash the word",{
-      teheme: "colored",});
+      theme: "colored",});
     }
     
   };
