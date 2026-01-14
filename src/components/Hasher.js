@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import View from "./View";
 import { MD5 } from "crypto-js";
 import Base64 from "crypto-js/enc-base64";
@@ -10,19 +10,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Hasher() {
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
   function toggle() {
     setIsOpen((isOpen) => !isOpen);
   }
-
-  useEffect(() => {
-    const storedOutput = JSON.parse(localStorage.getItem("password"));
-    if (storedOutput) {
-      setOutput(storedOutput);
-    }
-  }, []);
 
   const handleChange = (event) => {
     setInput(event.target.value);
@@ -46,7 +38,6 @@ function Hasher() {
     /*const data = []
     data.push({ value: hashedValueCorrect, date: Date.now() });
     localStorage.setItem('password', JSON.stringify(data));*/
-    setOutput(hashedValueCorrect);
     toast.success("Hash value copied to clipboard!", {
       theme: "colored",
     });
